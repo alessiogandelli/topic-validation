@@ -1,0 +1,245 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    padding: 10px;
+    line-height: 1.6;
+}
+
+.page-container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar a {
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.navbar .centered-buttons {
+    display: flex;
+}
+
+.container {
+    padding-top: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0 10px;
+}
+
+.form-item {
+    flex: 1;
+}
+
+form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: auto;
+    box-sizing: border-box;
+}
+
+form input[type="text"], form select {
+    width: 100%;
+    padding: 8px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+}
+
+form input[type="submit"] {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+select {
+    display: block;
+    padding: 10px;
+    margin-top: 15px;
+}
+
+.scrollable-table {
+    margin-top: 20px;
+    overflow-x: auto;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.my-dataframe {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.my-dataframe th, .my-dataframe td {
+    border: 1px solid #958f8f;
+    padding: 8px;
+}
+
+.my-dataframe tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.my-dataframe th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+
+.scrollable-table {
+    height: 100%;
+    overflow-y: auto;
+    display: block;
+}
+
+.fixed-bottom {
+    position: fixed;
+    bottom: 0;
+    width: 80%; /* Same as .page-container */
+    max-width: 1200px; /* Same as .page-container */
+    margin: 0 auto; /* Same as .page-container */
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    box-sizing: border-box; /* To include padding and border in the element's total width and height */
+}
+
+.fixed-bottom a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.fixed-bottom a:hover {
+    color: #ddd;
+}
+
+.fixed-bottom button, .fixed-bottom input[type="submit"], .fixed-bottom input[type="button"] {
+    background-color: #007BFF; /* Change as needed */
+    color: #fff; /* Change as needed */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.fixed-bottom button:hover, .fixed-bottom input[type="submit"]:hover, .fixed-bottom input[type="button"]:hover {
+    background-color: #0056b3; /* Change as needed */
+}
+
+#documents {
+    width: 100%;
+    max-width: 800px; /* Adjust this value to suit your design */
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.tweet {
+    background-color: #f5f8fa;
+    border: 1px solid #e1e8ed;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+
+}
+
+.tweet button {
+    margin: 5px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 11px;
+    width: 80px;
+}
+
+.tweet button:hover {
+    opacity: 0.8;
+}
+
+.tweet .positive {
+    background-color: #4CAF50;
+    /* Green */
+}
+
+.tweet .neutral {
+    background-color: #EED202;
+    /* Yellow */
+}
+
+.tweet .negative {
+    background-color: #f44336;
+    /* Red */
+}
+
+
+
+#topic-selector {
+    display: block;
+    width: 57% !important;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f5f8fa;
+    font-size: 16px;
+    color: #333;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#topic-selector:hover {
+    border-color: #999;
+}
+
+#topic-selector:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, .25);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
