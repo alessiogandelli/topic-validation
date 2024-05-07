@@ -91,14 +91,38 @@ def get_dataframe():
     return render_template('dataframe.html', table=table, page=page, topics=topics)  
 
 
+@app.route('/get_embedders', methods=['GET'])
+def get_embedders():
+    """Returns a JSON object containing all embedders."""
+    #list the folders in the path 
+    path = os.getenv('DATA_FOLDER')
+    embedders = os.listdir(os.path.join(path))
+    return jsonify(embedders)
+
+
+@app.route('/update-path', methods=['POST'])
+def update_path():
+    data = request.get_json()
+    embedder = data.get('embedder')
+
+    # Update the path on the server
+    # This is a placeholder. Replace this with your actual logic to update the path.
+    path = path + embedder
+    print(f'Updated path to: {path}')
+
+    return jsonify({'message': 'Path updated successfully'}), 200
+
 if __name__ == '__main__':
 
-    path = os.getenv('DATA_FOLDER')
+    copname = 'cop23'
+    embedders = ['text-embedding-3-small', 'all-MiniLM-L6-v2', 'paraphrase-MiniLM-L3-v2'] # list of embedders choose your player
+
+    path = os.getenv('DATA_FOLDER') + embedders[2]
     print(path)
     human_labeled = os.path.join(path, 'human_labeled.csv')
-    topic_data, df_topic = get_data(path)
+    topic_data, df_topic = get_data(path, copname)
 
-    df_tweets = pd.read_pickle(os.path.join(path, 'tweets_cop22_labeled.pkl'))
+    df_tweets = pd.read_pickle(os.path.join(path, 'tweets_'+copname+'_labeled.pkl'))
     df_tweets['reviewed'] = False
-    
+
     app.run(debug=True)

@@ -25,6 +25,7 @@ function labelTweet(tweet, label) {
 
 window.onload = function () {
     populateTopics();
+    populateEmbedders();
     fetch('/get_tweet')
         .then(response => response.json())
         .then(data => {
@@ -71,6 +72,58 @@ function populateTopics() {
                     updateDocs();           // fetch tweets for the selected topic
                 }
                 
+            });
+        });
+}
+
+
+function populateEmbedders() {
+    fetch('/get_embedders')
+        .then(response => response.json())
+        .then(data => {
+            const select = document.getElementById('embedder-selector');
+
+            // Create default option
+            const defaultOption = document.createElement('option');
+            defaultOption.value = '';
+            defaultOption.text = 'Select an Embedder';
+            select.appendChild(defaultOption);
+
+            // create different select options
+            for (const key in data) {
+                const option = document.createElement('option');
+                option.value = key;
+                option.text = data[key];
+                select.appendChild(option);
+            }
+
+            // add a listener, when the users selects a topic, we fetch the tweets
+            select.addEventListener('change', function () {
+                let selectedEmbedder = this.value;
+            
+                if (selectedEmbedder === '') {
+                    return;
+                }
+            
+                selectedEmbedder = parseInt(selectedEmbedder);
+                if (Number.isInteger(selectedEmbedder)) {
+                    populateTopics();
+                    updateDocs();           // fetch tweets for the selected topic
+            
+                    // Update the path on the server
+                    fetch('/update-path', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ newPath: selectedEmbedder }),
+                    })
+                    .then(response => response.json())
+                    .then(data => console.log(data))
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
+                }
             });
         });
 }

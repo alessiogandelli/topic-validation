@@ -14,9 +14,9 @@ def create_labeled_file(file_path):
             writer = csv.writer(f)
             writer.writerow(['tweet_id', 'label'])
 
-def get_data(path):
+def get_data(path, copname):
     """Reads data from a CSV file and returns a dictionary and a DataFrame."""
-    df = pd.read_csv(os.path.join(path, 'topics_cop22.csv'))
+    df = pd.read_csv(os.path.join(path, 'topics_'+ copname +'.csv'))
     df = df.loc[:, ~df.columns.str.contains('^Unnamed')]
     df = df.rename(columns={'Representative_Docs': 'docs'})
     topic_data = {row['Topic']: row.drop('Topic').to_dict() for _, row in df.iterrows()}
